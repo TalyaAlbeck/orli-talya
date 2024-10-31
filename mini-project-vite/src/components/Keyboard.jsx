@@ -23,6 +23,7 @@ function Keybord(){
         // console.log('inputValue: ', inputValue);
         setInputValue((prev)=>{
             let temp = [...prev]
+            isUpper ? temp.push({value: target.innerHTML.toString().toUpperCase(), style: style}):
             temp.push({value: target.innerHTML, style: style});
             // console.log(temp);
             
@@ -106,10 +107,6 @@ function Keybord(){
                 <option key={index} style={{backgroundColor: item}} value={item}>{item}</option>
                 ))}
                 </select> */}
-            </div>
-            <div>
-                <button onClick={() => setIsUpper(true)}>Upper</button>
-                <button onClick={() => setIsUpper(false)}>Lower</button>
             </div>
             <div>
                 <button onClick={() => setIsUpper(true)}>Upper</button>
