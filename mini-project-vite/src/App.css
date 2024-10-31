@@ -1,5 +1,5 @@
 #root {
-  max-width: 1680px;
+  width: 1680px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -21,7 +21,7 @@ textarea {
   display: inline-flex;
   max-width: 300px;
   position: relative;
-  left: -700px;
+  right: 40%;
 }
 .colors button {
   width: 30px;
@@ -47,3 +47,4 @@ nav {
   border: 1px solid rgb(136, 136, 136);
   min-height: 30px;
 }
+

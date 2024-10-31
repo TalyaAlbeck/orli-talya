@@ -82,6 +82,20 @@ function Keybord(){
                         <button key={index} onClick={() => {ChangeInputColor(item)}} style={{backgroundColor: item}}></button>
                     ))}
                 </div>
+                <div>
+                    <select onChange={changeTextSize} className="textSize">
+                        {sizes.map((size, index) => (
+                            <option key={index} value={size}>{size}</option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <select onChange={changeFontFamily} className="font">
+                        {fontFamilies.map((font, index) => (
+                            <option key={index} value={font}>{font}</option>
+                        ))}
+                    </select>
+                </div>
             </nav>
 
             <div onChange={changeInputValue} style={style} className="inputDiv">
@@ -111,21 +125,6 @@ function Keybord(){
             <div>
                 <button onClick={() => setIsUpper(false)}>Lower</button>
                 <button onClick={() => setIsUpper(true)}>Upper</button>
-            </div>
-            
-            <div>
-                <select onChange={changeTextSize}>
-                    {sizes.map((size, index) => (
-                        <option key={index} value={size}>{size}</option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <select onChange={changeFontFamily}>
-                    {fontFamilies.map((font, index) => (
-                        <option key={index} value={font}>{font}</option>
-                    ))}
-                </select>
             </div>
         </>
     )
