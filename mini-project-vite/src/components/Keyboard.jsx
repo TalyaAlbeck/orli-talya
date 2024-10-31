@@ -5,6 +5,7 @@ import ChangeInputColor from "./colors";
 const English = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
 const Hebrew = ['ק', 'ר', 'א', 'ט', 'ו', 'ן', 'ם', 'פ', 'ש', 'ד', 'ג', 'כ', 'ע', 'י', 'ח', 'ח', 'ל', 'ך', 'ף', 'ז', 'ס', 'ב', 'ה', 'נ', 'מ', 'צ', 'ת']
 const colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"]
+const sizes = [10, 20, 30, 40, 50];
 
 let myStyle = {
     color: "black",
@@ -18,8 +19,7 @@ function Keybord(){
     const [isUpper, setIsUpper] = useState(false);
 
     function addChar({target}) {
-        isUpper ? setInputValue(inputValue + target.innerHTML.toString().toUpperCase()) : setInputValue(inputValue + target.innerHTML);
-        
+        isUpper ? setInputValue(inputValue + target.innerHTML.toString().toUpperCase()) : setInputValue(inputValue + target.innerHTML);       
     }
     function addSpace() {
         setInputValue(inputValue + " ");
@@ -34,6 +34,12 @@ function Keybord(){
         setColorStyle((prev) => {
             return {...prev, color: newColor}
         })
+    }
+    function changeTextSize(event){
+        console.log({...myStyle, fontSize: event.target.value})
+        setColorStyle((prev) => {
+            return {...prev, fontSize: event.target.value}
+        });
     }
 
     return (
@@ -62,6 +68,13 @@ function Keybord(){
             <div>
                 <button onClick={() => setIsUpper(true)}>Upper</button>
                 <button onClick={() => setIsUpper(false)}>Lower</button>
+            </div>
+            <div>
+                <select onChange={changeTextSize}>
+                    {sizes.map((size, index) => (
+                        <option key={index} value={size}>{size}</option>
+                    ))}
+                </select>
             </div>
 
         </>
