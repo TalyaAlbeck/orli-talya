@@ -36,9 +36,14 @@ textarea {
 
 nav {
   position: absolute;
-  left: 10px;
+  left: 1px;
   top: 50px;
   border-bottom: 3px solid rgb(234, 232, 232);
   padding: 15px;
   width: 100%;
+}
+
+.inputDiv {
+  border: 1px solid rgb(136, 136, 136);
+  min-height: 30px;
 }
