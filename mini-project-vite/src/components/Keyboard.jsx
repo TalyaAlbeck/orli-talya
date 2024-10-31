@@ -4,7 +4,7 @@ import ChooseLanguage from "./languages";
 const English = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
 const Hebrew = ['ק', 'ר', 'א', 'ט', 'ו', 'ן', 'ם', 'פ', 'ש', 'ד', 'ג', 'כ', 'ע', 'י', 'ח', 'ח', 'ל', 'ך', 'ף', 'ז', 'ס', 'ב', 'ה', 'נ', 'מ', 'צ', 'ת'];
 const colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"];
-const sizes = [10, 20, 30, 40, 50];
+const sizes = [10, 15, 20, 25, 30, 35, 40, 45, 50];
 const fontFamilies = ['sans-serif', 'serif', 'monospace'];
 
 let myStyle = {
@@ -72,6 +72,18 @@ function Keybord(){
     function resetText(){
         setInputValue([]);
     }
+    function randomStyle() {
+        console.log("random");
+        let i = colors.length;
+        let ranC = colors[(Math.floor((Math.random()) * colors.length))];
+        let ranS = sizes[(Math.floor((Math.random()) * sizes.length))];
+        let ranF = fontFamilies[(Math.floor((Math.random()) * fontFamilies.length))];
+        
+        setStyle((prev) => {
+            return {...prev, color: ranC, fontSize: ranS, fontFamily :ranF}
+        })
+        
+    }
 
 
     return (
@@ -96,6 +108,7 @@ function Keybord(){
                         ))}
                     </select>
                 </div>
+                <button className="rendom" onClick={randomStyle}>random style</button>
             </nav>
             
             <div onChange={changeInputValue} style={style} className="inputDiv">
