@@ -1,12 +1,19 @@
 #root {
-  max-width: 1680px;
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
 .keyboard {
-  max-width: 470px;
+    justify-content: center;
+    padding-right: 30vw;
+    padding-left: 30vw;
+}
+.keyboard button{
+  width: 80px;
+  height: 80px;
+  font-size: 25px;
 }
 
 textarea {
@@ -15,18 +22,13 @@ textarea {
 }
 
 .colors {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  /* display: inline-block; */
+  
   display: inline-flex;
   max-width: 300px;
-  position: relative;
-  left: -700px;
 }
 .colors button {
   width: 30px;
   height: 30px;
-  display: flex;  
   justify-content: center;
   border-radius: 50%;
   padding: 2px;
@@ -35,15 +37,30 @@ textarea {
 }
 
 nav {
-  position: absolute;
+  display: flex;
   left: 1px;
-  top: 50px;
   border-bottom: 3px solid rgb(234, 232, 232);
   padding: 15px;
   width: 100%;
+  background-color: beige;
 }
 
 .inputDiv {
   border: 1px solid rgb(136, 136, 136);
-  min-height: 30px;
+  min-height: 50px;
+  margin-top: 40px;
+}
+.specials button{
+  width: 100px;
+  height: 80px;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+}
+.specials{
+  display: flex;
+  justify-content: center;
+}
+main{
+  margin-top: 0px;
 }

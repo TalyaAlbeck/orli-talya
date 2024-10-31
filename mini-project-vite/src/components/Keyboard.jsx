@@ -82,15 +82,29 @@ function Keybord(){
                         <button key={index} onClick={() => {ChangeInputColor(item)}} style={{backgroundColor: item}}></button>
                     ))}
                 </div>
+                <div>
+                    <select onChange={changeTextSize} style={{fontSize: '25px', marginLeft: '20px'}}>
+                        {sizes.map((size, index) => (
+                            <option key={index} value={size}>{size}</option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <select onChange={changeFontFamily} style={{fontSize: '25px', marginLeft: '20px'}}>
+                        {fontFamilies.map((font, index) => (
+                            <option key={index} value={font}>{font}</option>
+                        ))}
+                    </select>
+                </div>
             </nav>
-
+            
             <div onChange={changeInputValue} style={style} className="inputDiv">
                 {inputValue.map((item, index) => {
                     return <span key={index} style={item.style} value={item.value}>{item.value}</span>
                 })}
             </div>
             <br /><br />
-            <div>
+            <div className="specials">
                 <button onClick={deleteLastChar}>delete</button>
                 <button onClick={resetText}>reset</button>
             </div>
@@ -102,9 +116,11 @@ function Keybord(){
                     <button key={index} onClick={addChar}>{item}</button>
                 ))
             }<br />
-                <button className="space" onClick={addSpace}>space</button>
-                <button className="dot" onClick={addChar}>.</button>
-                <button className="enter" onClick={addEnter}>enter</button>
+                <div className="specials">
+                    <button className="space" onClick={addSpace}>space</button>
+                    <button className="dot" onClick={addChar}>.</button>
+                    <button className="enter" onClick={addEnter}>enter</button>
+                </div>
             <br /><br /><br />
             </div>
             <ChooseLanguage setLanguage={setLanguage}/>
@@ -113,20 +129,7 @@ function Keybord(){
                 <button onClick={() => setIsUpper(true)}>Upper</button>
             </div>
             
-            <div>
-                <select onChange={changeTextSize}>
-                    {sizes.map((size, index) => (
-                        <option key={index} value={size}>{size}</option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <select onChange={changeFontFamily}>
-                    {fontFamilies.map((font, index) => (
-                        <option key={index} value={font}>{font}</option>
-                    ))}
-                </select>
-            </div>
+            
         </>
     )
 }
