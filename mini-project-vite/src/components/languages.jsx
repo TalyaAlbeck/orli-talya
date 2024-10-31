@@ -1,11 +1,6 @@
 import React, {useState} from "react";
 
 function ChooseLanguage(props) {
-    // function changeLanguage({target}) {
-    //     const newLanguage = target.innerHTML;
-    //     console.log(newLanguage);
-    //     setLanguage(newLanguage);
-    // }
 
     return (
         <>
