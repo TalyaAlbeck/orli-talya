@@ -16,7 +16,7 @@ let myStyle = {
 function Keybord(){
     const [inputValue, setInputValue] = useState([])
     const [language, setLanguage] = useState("English")
-    const [style, setColorStyle] = useState(myStyle);
+    const [style, setStyle] = useState(myStyle);
     const [isUpper, setIsUpper] = useState(false);
 
     function addChar({target}) {
@@ -46,9 +46,13 @@ function Keybord(){
         setInputValue(target.value);
     }
     function ChangeInputColor(newColor) {
-        setColorStyle((prev) => {
+        setStyle((prev) => {
             return {...prev, color: newColor}
         })
+    }
+    function changeSelectStyle(e) {
+        console.log(e);
+        console.log("h") 
     }
     function changeTextSize(event){
         setColorStyle((prev) => {
@@ -78,6 +82,14 @@ function Keybord(){
 
     return (
         <>
+            <nav>
+                <div className="colors">
+                    {colors.map((item, index) => (
+                        <button key={index} onClick={() => {ChangeInputColor(item)}} style={{backgroundColor: item}}></button>
+                    ))}
+                </div>
+            </nav>
+
             <div onChange={changeInputValue} style={style}>
                 {inputValue.map((item, index) => {
                     return <span key={index} style={item.style} value={item.value}>{item.value}</span>
@@ -102,30 +114,10 @@ function Keybord(){
             <br /><br /><br />
             </div>
             <ChooseLanguage setLanguage={setLanguage}/>
-            <div className="colors">
-                {colors.map((item, index) => (
-                    <button key={index} onClick={() => {ChangeInputColor(item)}} style={{backgroundColor: item}}>{item}</button>
-                ))}
-            </div>
-            <div>
-                <button onClick={() => setIsUpper(true)}>Upper</button>
-                <button onClick={() => setIsUpper(false)}>Lower</button>
-            </div>
-            <div>
-                <select onChange={changeTextSize}>
-                    {sizes.map((size, index) => (
-                        <option key={index} value={size}>{size}</option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <select onChange={changeFontFamily}>
-                    {fontFamilies.map((font, index) => (
-                        <option key={index} value={font}>{font}</option>
-                    ))}
-                </select>
-            </div>
-
+                        <div>
+                            <button onClick={() => setIsUpper(false)}>Lower</button>
+                            <button onClick={() => setIsUpper(true)}>Upper</button>
+                        </div>
         </>
     )
 }
