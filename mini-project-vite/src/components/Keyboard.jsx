@@ -13,29 +13,21 @@ let myStyle = {
 function Keybord(){
     const [inputValue, setInputValue] = useState([])
     const [language, setLanguage] = useState("English")
-    const [style, setColorStyle] = useState(myStyle);
+    const [style, setStyle] = useState(myStyle);
     const [isUpper, setIsUpper] = useState(false);
 
     function addChar({target}) {
-        // const newValue = inputValue;
-        // newValue.push(target.innerHTML)
-        // console.log('inputValue: ', inputValue);
         setInputValue((prev)=>{
             let temp = [...prev]
-            temp.push({value: target.innerHTML, style: style});
-            // console.log(temp);
-            
+            isUpper ? temp.push({value: target.innerHTML.toString().toUpperCase(), style: style}):
+            temp.push({value: target.innerHTML, style: style});            
         return temp
-    });
-    // for(let i = 0; i < prev.length; i++) {
-    //     return prev[i]
-    // }    
+    }); 
     }
     function addSpace() {
         setInputValue((prev)=>{
             let temp = [...prev]
             temp.push({value: " ", style: {fontSize: style.fontSize}});
-            // console.log(temp);
             
         return temp
     });
@@ -44,7 +36,6 @@ function Keybord(){
         setInputValue((prev)=>{
             let temp = [...prev]
             temp.push({value: "\n", style: {fontSize: style.fontSize}});
-            // console.log(temp);
             
         return temp
     });
@@ -53,9 +44,13 @@ function Keybord(){
         setInputValue(target.value);
     }
     function ChangeInputColor(newColor) {
-        setColorStyle((prev) => {
+        setStyle((prev) => {
             return {...prev, color: newColor}
         })
+    }
+    function changeSelectStyle(e) {
+        console.log(e);
+        console.log("h") 
     }
 
     function changeInputValue() {
@@ -69,13 +64,11 @@ function Keybord(){
         <>
             {/* <Input /> */}
             <div onChange={changeInputValue} style={style}>
-                {/* {console.log(temp)}; */}
                 {inputValue.map((item, index) => {
                     console.log(item.value);
-                    return <span key={index} style={item.style} value={item.value}>{item.value}</span>
+                    return <span key={index} style={item.style} value={item.value} onSelect={(e) => {changeSelectStyle(e)}}>{item.value}</span>
                 })}
             </div>
-            {/* <div onChange={changeInputValue} style={style}> {inputValue} </div> */}
                 <br /><br />
             <div className="keyboard">
                 {language === 'English'? English.map((item, index) => (
@@ -90,9 +83,13 @@ function Keybord(){
             <br /><br /><br />
             </div>
             <ChooseLanguage setLanguage={setLanguage}/>
+                        <div>
+                            <button onClick={() => setIsUpper(false)}>Lower</button>
+                            <button onClick={() => setIsUpper(true)}>Upper</button>
+                        </div>
             <div className="colors">
                 {colors.map((item, index) => (
-                    <button key={index} onClick={() => {ChangeInputColor(item)}} style={{backgroundColor: item}}>{item}</button>
+                    <button key={index} onClick={() => {ChangeInputColor(item)}} style={{backgroundColor: item}}></button>
                 ))}
                 {/* <select className="colors" id="color-select" onChange={(e)=> ChangeInputColor(e.target.value)}>
                     {colors.map((item, index) => (
@@ -100,15 +97,6 @@ function Keybord(){
                 ))}
                 </select> */}
             </div>
-            <div>
-                <button onClick={() => setIsUpper(true)}>Upper</button>
-                <button onClick={() => setIsUpper(false)}>Lower</button>
-            </div>
-            <div>
-                <button onClick={() => setIsUpper(true)}>Upper</button>
-                <button onClick={() => setIsUpper(false)}>Lower</button>
-            </div>
-
         </>
     )
 }
