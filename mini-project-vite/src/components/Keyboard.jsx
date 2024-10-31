@@ -13,7 +13,9 @@ let myStyle = {
 function Keybord(){
     const [inputValue, setInputValue] = useState([])
     const [language, setLanguage] = useState("English")
-    const [style, setColorStyle] = useState(myStyle)
+    const [style, setColorStyle] = useState(myStyle);
+    const [isUpper, setIsUpper] = useState(false);
+
     function addChar({target}) {
         // const newValue = inputValue;
         // newValue.push(target.innerHTML)
@@ -97,6 +99,14 @@ function Keybord(){
                 <option key={index} style={{backgroundColor: item}} value={item}>{item}</option>
                 ))}
                 </select> */}
+            </div>
+            <div>
+                <button onClick={() => setIsUpper(true)}>Upper</button>
+                <button onClick={() => setIsUpper(false)}>Lower</button>
+            </div>
+            <div>
+                <button onClick={() => setIsUpper(true)}>Upper</button>
+                <button onClick={() => setIsUpper(false)}>Lower</button>
             </div>
 
         </>
