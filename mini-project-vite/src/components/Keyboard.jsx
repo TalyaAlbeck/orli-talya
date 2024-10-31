@@ -12,12 +12,13 @@ let myStyle = {
 }
 
 function Keybord(){
-    const [inputValue, setInputValue] = useState("")
-    const [language, setLanguage] = useState("English")
-    const [style, setColorStyle] = useState(myStyle)
+    const [inputValue, setInputValue] = useState("");
+    const [language, setLanguage] = useState("English");
+    const [style, setColorStyle] = useState(myStyle);
+    const [isUpper, setIsUpper] = useState(false);
 
     function addChar({target}) {
-        setInputValue(inputValue + target.innerHTML);
+        isUpper ? setInputValue(inputValue + target.innerHTML.toString().toUpperCase()) : setInputValue(inputValue + target.innerHTML);
         
     }
     function addSpace() {
@@ -55,8 +56,12 @@ function Keybord(){
             <ChooseLanguage setLanguage={setLanguage}/>
             <div className="colors">
                 {colors.map((item, index) => (
-                    <button onClick={() => {ChangeInputColor(item)}} style={{backgroundColor: item}}>{item}</button>
+                    <button key={index} onClick={() => {ChangeInputColor(item)}} style={{backgroundColor: item}}>{item}</button>
                 ))}
+            </div>
+            <div>
+                <button onClick={() => setIsUpper(true)}>Upper</button>
+                <button onClick={() => setIsUpper(false)}>Lower</button>
             </div>
 
         </>
