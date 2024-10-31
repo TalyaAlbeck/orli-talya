@@ -18,37 +18,26 @@ function Keybord(){
     const [isUpper, setIsUpper] = useState(false);
 
     function addChar({target}) {
-        // const newValue = inputValue;
-        // newValue.push(target.innerHTML)
-        // console.log('inputValue: ', inputValue);
         setInputValue((prev)=>{
             let temp = [...prev]
             isUpper ? temp.push({value: target.innerHTML.toString().toUpperCase(), style: style}):
-            temp.push({value: target.innerHTML, style: style});
-            // console.log(temp);
-            
-        return temp
-    });
-    // for(let i = 0; i < prev.length; i++) {
-    //     return prev[i]
-    // }    
+            temp.push({value: target.innerHTML, style: style});            
+            return temp
+        });
     }
+    
     function addSpace() {
         setInputValue((prev)=>{
             let temp = [...prev]
             temp.push({value: " ", style: {fontSize: style.fontSize}});
-            // console.log(temp);
-            
-        return temp
+            return temp
     });
     }
     function addEnter() {
         setInputValue((prev)=>{
             let temp = [...prev]
-            temp.push({value: "\n", style: {fontSize: style.fontSize}});
-            // console.log(temp);
-            
-        return temp
+            temp.push({value: "\n", style: {fontSize: style.fontSize}});            
+            return temp
     });
     }
     function changeInput({ target }) {
@@ -75,15 +64,12 @@ function Keybord(){
     console.log('inputValue: ', inputValue);
     return (
         <>
-            {/* <Input /> */}
             <div onChange={changeInputValue} style={style}>
-                {/* {console.log(temp)}; */}
                 {inputValue.map((item, index) => {
                     console.log(item.value);
                     return <span key={index} style={item.style} value={item.value}>{item.value}</span>
                 })}
             </div>
-            {/* <div onChange={changeInputValue} style={style}> {inputValue} </div> */}
                 <br /><br />
             <div className="keyboard">
                 {language === 'English'? English.map((item, index) => (
@@ -102,11 +88,6 @@ function Keybord(){
                 {colors.map((item, index) => (
                     <button key={index} onClick={() => {ChangeInputColor(item)}} style={{backgroundColor: item}}>{item}</button>
                 ))}
-                {/* <select className="colors" id="color-select" onChange={(e)=> ChangeInputColor(e.target.value)}>
-                    {colors.map((item, index) => (
-                <option key={index} style={{backgroundColor: item}} value={item}>{item}</option>
-                ))}
-                </select> */}
             </div>
             <div>
                 <button onClick={() => setIsUpper(true)}>Upper</button>
@@ -123,5 +104,6 @@ function Keybord(){
         </>
     )
 }
+
 
 export default Keybord;
