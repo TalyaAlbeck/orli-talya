@@ -48,12 +48,12 @@ function Keybord(){
         })
     }
     function changeTextSize(event){
-        setColorStyle((prev) => {
+        setStyle((prev) => {
             return {...prev, fontSize: parseInt(event.target.value)}
         });
     }
     function changeFontFamily(event){
-        setColorStyle((prev) => {
+        setStyle((prev) => {
             return {...prev, fontFamily: event.target.value}
         });
     }
@@ -108,10 +108,25 @@ function Keybord(){
             <br /><br /><br />
             </div>
             <ChooseLanguage setLanguage={setLanguage}/>
-                        <div>
-                            <button onClick={() => setIsUpper(false)}>Lower</button>
-                            <button onClick={() => setIsUpper(true)}>Upper</button>
-                        </div>
+            <div>
+                <button onClick={() => setIsUpper(false)}>Lower</button>
+                <button onClick={() => setIsUpper(true)}>Upper</button>
+            </div>
+            
+            <div>
+                <select onChange={changeTextSize}>
+                    {sizes.map((size, index) => (
+                        <option key={index} value={size}>{size}</option>
+                    ))}
+                </select>
+            </div>
+            <div>
+                <select onChange={changeFontFamily}>
+                    {fontFamilies.map((font, index) => (
+                        <option key={index} value={font}>{font}</option>
+                    ))}
+                </select>
+            </div>
         </>
     )
 }
