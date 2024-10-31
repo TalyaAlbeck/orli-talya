@@ -38,7 +38,7 @@ function Keybord(){
     function addEnter() {
         setInputValue((prev)=>{
             let temp = [...prev]
-            temp.push({value: "\n", style: {fontSize: style.fontSize}});            
+            temp.push({value: <br/>, style: {fontSize: style.fontSize}});            
             return temp
     });
     }
@@ -52,13 +52,11 @@ function Keybord(){
     }
     function changeTextSize(event){
         setColorStyle((prev) => {
-            console.log({...prev, fontSize: parseInt(event.target.value)})
             return {...prev, fontSize: parseInt(event.target.value)}
         });
     }
     function changeFontFamily(event){
         setColorStyle((prev) => {
-            console.log({...prev, fontFamily: event.target.value})
             return {...prev, fontFamily: event.target.value}
         });
     }
@@ -78,12 +76,10 @@ function Keybord(){
         setInputValue([]);
     }
 
-    console.log('inputValue: ', inputValue);
     return (
         <>
             <div onChange={changeInputValue} style={style}>
                 {inputValue.map((item, index) => {
-                    console.log(item.style);
                     return <span key={index} style={item.style} value={item.value}>{item.value}</span>
                 })}
             </div>
